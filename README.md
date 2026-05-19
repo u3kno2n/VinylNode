@@ -1,6 +1,6 @@
 # 💻 VinylNode
 
-**VinylNode** is a lightweight, terminal-optimized, high-fidelity local audio streaming server built with Python, Flask, and vanilla JavaScript. Designed to run seamlessly inside resource-constrained environments like Termux on Android or local machines, it transforms any device into a dedicated wireless audio node.
+**VinylNode** is a lightweight, terminal-optimized, high-fidelity local audio streaming server built with Python, Flask, and vanilla JavaScript. Designed to run seamlessly inside resource-constrained environments like Termux on Android, it transforms a recycled, headless smartphone into a dedicated wireless audio node.
 
 The application bypasses standard mobile browser limitations to stream uncompressed, lossless audio formats (FLAC, WAV, etc.) over a local network. It features a responsive web interface centered around an interactive vinyl turntable engine that bridges tactile classic audio aesthetics with modern digital file system hosting.
 
@@ -19,10 +19,22 @@ The application bypasses standard mobile browser limitations to stream uncompres
 
 ### 🎛️ Interactive Vinyl Turntable UI
 * **Automated Rotation Sync:** The virtual vinyl deck automatically spins when audio is playing and pauses cleanly when the stream is stopped, acting as a real-time mechanical visualizer.
-* **Unlimited Inertial Scrubbing Engine:** Re-engineered touch-action math using absolute angular displacement tracking. Users can grab and spin the vinyl disc like a physical DJ deck to scrub backwards or forwards through massive, minutes-long tracks without encountering micro-frame boundary limits.
-* **Dynamic Content Extraction:** Automatically matches running audio tracks with random album backgrounds sourced over-the-air from your local `covers/` folder, falling back to an elegant minimal asset design if empty.
+* **Unlimited Inertial Scrubbing Engine:** Re-engineered touch-action math using absolute angular displacement tracking. Users can grab and spin the vinyl disc like a physical DJ deck to scrub backwards or forwards through massive tracks without encountering micro-frame boundary limits.
+* **Dynamic Content Extraction:** Automatically matches running audio tracks with random album backgrounds sourced over-the-air from your local `covers/` folder.
 
 ### 🎬 Immersive Cinematic Focus Mode
 * **Ambient Clean UI:** A single click instantly hides the entire layout—including navigation headers, file lists, sliders, and upload forms—collapsing the webpage into a pure pitch-black workspace.
 * **Expanded Center-Disk Layout:** The vinyl album art container scales up dynamically, locking itself directly into the absolute vertical and horizontal center of the display.
-* **Tactile Dismissal:** Tapping anywhere on the centralized spinning vinyl artwork natively fires the HTML5 Fullscreen exit handler, smoothly scaling the dashboard control panel back into view.
+
+---
+
+## 🛠️ Infrastructure & Headless Architecture
+
+This project is specifically engineered to run in a **headless server configuration** using a recycled Android smartphone (even one with a broken screen) acting as a dedicated network appliance. By combining Termux with OpenSSH and WinSCP, you eliminate the need to interact with the phone's physical screen entirely.
+
+```text
++-----------------------+                    +-------------------------+
+|    Laptop / Client    |  SSH / WinSCP (SFTP) |  Headless Android Node  |
+|  - Real-time Editing  |------------------->|  - Termux Environment    |
+|  - Web Browser Access |                    |  - Flask Application     |
++-----------------------+                    +-------------------------+
